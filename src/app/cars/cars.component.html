@@ -1,0 +1,7 @@
+<ul>
+  <a *ngFor="let car of cars"  routerLink="/carDetails/{{car.id}}">
+    <p>Id:{{car.id}}</p>
+    <p>Brand:{{car.brand}}</p>
+    <p>Created at:{{car.createdAt}}</p>
+  </a>
+</ul>
