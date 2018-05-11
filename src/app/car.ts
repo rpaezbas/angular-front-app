@@ -1,9 +1,14 @@
 
 export class Car {
   id: number;
-  brand: string;
+  brand: Brand;
   country: string;
-  createdAt: Date ;
-  registeredAt: Date ;
-  lastUpdatedAt: Date ;
+  createdAt: Date;
+  registration: Date ;
+  lastUpdated: Date ;
+}
+
+export interface Brand {
+  id: number;
+  name: string;
 }

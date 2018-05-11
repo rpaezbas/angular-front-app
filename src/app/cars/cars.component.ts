@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CarService } from '../car.service';
 import { Car } from '../car';
+import { Brand } from '../car';
+import { Observable, Timestamp } from 'rxjs';
+import { last } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cars',
@@ -9,7 +12,8 @@ import { Car } from '../car';
 })
 export class CarsComponent implements OnInit {
 
-  cars:Car[];
+  cars: Car[];
+  newDate: Date = new Date();
 
   constructor(private carService: CarService) { }
 
@@ -18,8 +22,20 @@ export class CarsComponent implements OnInit {
   }
 
   getCars(): void {
-    this.carService.getCars()
-        .subscribe(cars => this.cars = cars);
+    this.carService.getCars().subscribe(data => this.cars = data);
+  }
+
+  add(country: string, createdAt: Date, registration: Date, lastUpdated: Date): void {
+    this.carService.addCar({country: country, brand: {id: 5, name: 'iscing elit,'},
+                            createdAt: createdAt, lastUpdated: lastUpdated, registration: registration} as Car)
+      .subscribe(c => {
+        this.cars.push(c);
+      });
+  }
+
+  deleteCar(car: Car): void {
+    this.carService.deleteCar(car.id).subscribe();
+    this.cars = this.cars.filter(c => c !== car);
   }
 
 }

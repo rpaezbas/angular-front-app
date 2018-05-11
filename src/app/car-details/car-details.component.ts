@@ -12,7 +12,7 @@ import { Car } from '../car';
 })
 export class CarDetailsComponent implements OnInit {
 
-  @Input() car: Car;
+  car: Car;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,12 +26,16 @@ export class CarDetailsComponent implements OnInit {
 
   getCar(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.carService.getCar(id)
-      .subscribe(car => this.car = car);
+    this.carService.getCar(id).subscribe(car => this.car = car);
   }
 
   goBack(): void {
     this.location.back();
+  }
+
+  save(): void {
+    this.carService.updateCar(this.car.id, this.car)
+      .subscribe(() => this.goBack());
   }
 
 }
