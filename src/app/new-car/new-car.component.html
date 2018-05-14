@@ -1,0 +1,42 @@
+<div class="container" style="margin-top:30px">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <form [formGroup]="form">
+        <div class="form-group">
+          <label for="carBrand">Brand:</label>
+          <input type="text" [ngClass]="{'form-control':true,'is-invalid':form.controls.brand.touched && form.controls.brand.invalid}"
+            name="carBrand" #carBrand formControlName="brand" />
+          <p *ngIf="form.controls.brand.invalid && form.controls.brand.touched" class="text-danger ">Brand is required</p>
+        </div>
+        <div class="form-group ">
+          <label for="country ">Country:</label>
+          <input type="text " [ngClass]="{ 'form-control':true, 'is-invalid':form.controls.country.touched && form.controls.country.invalid} "
+            name="carCountry " #carCountry formControlName="country" />
+          <p *ngIf="form.controls.country.invalid && form.controls.country.touched" class="text-danger ">Country is required</p>
+        </div>
+        <div class="form-group ">
+          <label for="carCreatedAt">Created at:</label>
+          <input type="datetime-local" [ngClass]="{ 'form-control':true,'is-invalid':form.controls.createdAt.touched
+            && form.controls.createdAt.invalid} " name="carCreatedAt" step="1" #carCreatedAt formControlName="createdAt"/>
+          <p *ngIf="form.controls.createdAt.invalid && form.controls.createdAt.touched " class="text-danger ">The format of the date is invalid</p>
+        </div>
+        <div class="form-group">
+          <label for="carRegistration">Registration at:</label>
+          <input type="datetime-local" [ngClass]="{ 'form-control':true,'is-invalid':form.controls.registration.touched
+            && form.controls.registration.invalid} " name="carRegistration" step="1" #carRegistration formControlName="registration"/>
+          <p *ngIf="form.controls.registration.invalid && form.controls.registration.touched " class="text-danger ">The format of the date is invalid</p>
+        </div>
+        <div class="form-group">
+          <label for="carLastUpdated">Last updated at:</label>
+          <input type="datetime-local" [ngClass]="{ 'form-control':true,'is-invalid':form.controls.lastUpdated.touched
+            && form.controls.lastUpdated.invalid} " name="carLastUpdated" step="1" #carLastUpdated formControlName="lastUpdated"/>
+          <p *ngIf="form.controls.lastUpdated.invalid && form.controls.lastUpdated.touched" class="text-danger ">The format of the date is invalid</p>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="add(carCountry.value, carCreatedAt.value, carRegistration.value,
+            carLastUpdated.value);" [disabled]="!form.valid">Create</button>
+      </form>
+
+    </div>
+  </div>
+</div>

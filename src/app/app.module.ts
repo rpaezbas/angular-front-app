@@ -1,23 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CarsComponent } from './cars/cars.component';
 import { CarDetailsComponent } from './car-details/car-details.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { NewCarComponent } from './new-car/new-car.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CarsComponent,
-    CarDetailsComponent
+    CarDetailsComponent,
+    NewCarComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],

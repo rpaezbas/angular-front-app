@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CarService } from '../car.service';
 import { Car } from '../car';
-import { Brand } from '../car';
-import { Observable, Timestamp } from 'rxjs';
+import { Observable, Timestamp, Subscription } from 'rxjs';
 import { last } from 'rxjs/operators';
 
 @Component({
@@ -12,30 +11,20 @@ import { last } from 'rxjs/operators';
 })
 export class CarsComponent implements OnInit {
 
+  carsSubcription: Subscription;
   cars: Car[];
   newDate: Date = new Date();
+
 
   constructor(private carService: CarService) { }
 
   ngOnInit() {
-    this.getCars();
-  }
-
-  getCars(): void {
-    this.carService.getCars().subscribe(data => this.cars = data);
-  }
-
-  add(country: string, createdAt: Date, registration: Date, lastUpdated: Date): void {
-    this.carService.addCar({country: country, brand: {id: 5, name: 'iscing elit,'},
-                            createdAt: createdAt, lastUpdated: lastUpdated, registration: registration} as Car)
-      .subscribe(c => {
-        this.cars.push(c);
-      });
+    this.carsSubcription = this.carService.carsSubject.subscribe(cars => this.cars = cars);
+    this.carService.getCarsInDB();
   }
 
   deleteCar(car: Car): void {
-    this.carService.deleteCar(car.id).subscribe();
-    this.cars = this.cars.filter(c => c !== car);
+    this.carService.deleteCarInDB(car.id);
   }
 
 }

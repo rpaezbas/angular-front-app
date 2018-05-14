@@ -26,7 +26,7 @@ export class CarDetailsComponent implements OnInit {
 
   getCar(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.carService.getCar(id).subscribe(car => this.car = car);
+    this.carService.getSingleCarInDB(id).subscribe(car => this.car = car);
   }
 
   goBack(): void {
@@ -34,8 +34,8 @@ export class CarDetailsComponent implements OnInit {
   }
 
   save(): void {
-    this.carService.updateCar(this.car.id, this.car)
-      .subscribe(() => this.goBack());
+    this.carService.updateCarInDB(this.car.id, this.car);
+    this.goBack();
   }
 
 }

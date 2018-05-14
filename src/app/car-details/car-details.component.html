@@ -1,10 +1,47 @@
-<div *ngIf="car">
-    <p>{{car.id}}</p>
-    <input [(ngModel)]="car.brand.name" placeholder="brand" />
-    <input [(ngModel)]="car.country" placeholder="country" />
-    <p>Created at: {{car.createdAt | date}}</p>
-    <p>Last updated at: {{car.lastUpdated | date}}</p>
-    <p>Registered at: {{car.registration | date}}</p>
-    <button (click)="goBack()">go back</button>
-    <button (click)="save()">save</button>
+<div class="container" style="margin-top:30px">
+    <div class="row">
+        <div class="col-sm-12">
+
+            <form *ngIf="car">
+
+                <p>{{car.id}}</p>
+
+                <div class="form-group">
+                    <label for="country">Country:</label>
+                    <input [(ngModel)]="car.country" class="form-control" name="country" />
+                </div>
+
+                <div class="form-group">
+                    <label for="brand">Brand:</label>
+                    <input [(ngModel)]="car.brand" class="form-control" name="brand" />
+                </div>
+
+                <div class="form-group">
+                    <label for="createdAt">Created at:</label>
+                    <input [(ngModel)]="car.createdAt" class="form-control" name="createdAt" />
+                </div>
+
+                <div class="form-group">
+                    <label for="registration">Registration:</label>
+                    <input [(ngModel)]="car.registration" class="form-control" name="registration" />
+                </div>
+
+                <div class="form-group">
+                    <label for="lastUpdated">lastUpdated:</label>
+                    <input [(ngModel)]="car.lastUpdated" class="form-control" name="lastUpdated" />
+                </div>
+
+                <button class="btn btn-primary" (click)="save()">save</button>
+                <button class="btn btn-outline-primary moveRight" (click)="goBack()">go back</button>
+                
+            </form>
+
+
+
+
+
+
+
+        </div>
+    </div>
 </div>
