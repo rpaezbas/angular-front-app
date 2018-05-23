@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-4 col-sm-7 mt-4">
+        <input class="form-control" #searchBox id="search-box" (keyup)="search(searchBox.value)" placeholder="Search..."/>
+    </div>
+
+    <div class="col-4 col-sm-2 mt-4 filter-span">
+        <span>Filter by:</span>
+    </div>
+
+    <div class="col-4 col-sm-3  mt-4 no-mt">
+      <select class="form-control category" [(ngModel)]="searchType">
+        <option value="brand">Brand</option>
+        <option value="country">Country</option>
+      </select>
+    </div>
+
+    <div class="col-12 mt-4">
+      <ul class="list-group">
+        <li *ngFor="let car of cars$ | async" class="list-group-item">
+          <a routerLink="/detail/{{car.id}}">
+            {{car.id}}
+          </a>
+        </li>
+      </ul>
+    </div>
+
+
+  </div>
+</div>

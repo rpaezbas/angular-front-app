@@ -1,0 +1,17 @@
+@media (min-width: 570px) {
+    .create-car-button{
+        position:relative;
+        left:-100px;
+    }
+}
+
+@media (max-width: 575px) {
+    .brand{
+        display:none;
+    }
+
+    .create-car-button{
+        position:relative;
+        left:-20px;
+    }
+}

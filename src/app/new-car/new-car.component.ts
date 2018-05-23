@@ -26,7 +26,7 @@ export class NewCarComponent implements OnInit {
 
   add(country: string, createdAt: Date, registration: Date, lastUpdated: Date): void {
     if (country !== '' && createdAt !== null && registration != null && lastUpdated != null) {
-      this.carService.addCarInDB({
+      this.carService.addEntityInDB({
         country: country, brand: { id: 5, name: 'iscing elit,' },
         createdAt: createdAt, lastUpdated: lastUpdated, registration: registration
       } as Car);

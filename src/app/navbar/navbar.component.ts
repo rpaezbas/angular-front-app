@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.brand = 'My app!';
     this.items = [];
-    this.items.push({ name: 'Create car', route: '/newCar' });
+    // this.items.push({ name: 'Create car', route: '/newCar' });
     console.log(this.items.length);
 
   }

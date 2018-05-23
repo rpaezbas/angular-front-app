@@ -1,0 +1,27 @@
+@media (min-width: 775px) {
+    .filter-label{
+        left:40px;
+        top:7px;
+    }
+}
+
+@media (min-width: 575px) {
+    .filter-label{
+        top:7px;
+    }
+}
+
+@media (max-width: 575px) {
+    .no-mt{
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+
+.filter-span{
+    text-align: right;
+    position: relative;
+    left:10px;
+    top:7px;
+    width:100%;
+}

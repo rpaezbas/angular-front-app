@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CarService } from '../car.service';
 import { Car } from '../car';
 import { Observable, Timestamp, Subscription } from 'rxjs';
@@ -9,7 +9,7 @@ import { last } from 'rxjs/operators';
   templateUrl: './cars.component.html',
   styleUrls: ['./cars.component.css']
 })
-export class CarsComponent implements OnInit {
+export class CarsComponent implements OnInit, OnDestroy {
 
   carsSubcription: Subscription;
   cars: Car[];
@@ -19,12 +19,15 @@ export class CarsComponent implements OnInit {
   constructor(private carService: CarService) { }
 
   ngOnInit() {
-    this.carsSubcription = this.carService.carsSubject.subscribe(cars => this.cars = cars);
-    this.carService.getCarsInDB();
+    this.carsSubcription = this.carService.subject.subscribe((cars) => this.cars = cars);
+    this.carService.getEntitiesInDB();
+  }
+  ngOnDestroy() {
+    this.carsSubcription.unsubscribe();
   }
 
   deleteCar(car: Car): void {
-    this.carService.deleteCarInDB(car.id);
+    this.carService.deleteEntityInDB(car.id);
   }
 
 }

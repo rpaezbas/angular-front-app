@@ -8,6 +8,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NewCarComponent } from './new-car/new-car.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     CarsComponent,
     CarDetailsComponent,
     NewCarComponent,
-    NavbarComponent
+    NavbarComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
